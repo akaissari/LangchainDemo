@@ -8,7 +8,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
 
 load_dotenv()
-os.environ["GROQ_API_KEY"]= "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"
+os.environ["GROQ_API_KEY"]= 
 
 ## Langsmith Tracking
 # os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
