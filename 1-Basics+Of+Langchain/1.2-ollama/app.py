@@ -5,13 +5,15 @@ from langchain_community.llms import Ollama
 import streamlit as st
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_groq import ChatGroq
 
 load_dotenv()
+os.environ["GROQ_API_KEY"]= "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"
 
 ## Langsmith Tracking
-os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
-os.environ["LANGCHAIN_TRACING_V2"]="true"
-os.environ["LANGCHAIN_PROJECT"]=os.getenv("LANGCHAIN_PROJECT")
+# os.environ["LANGCHAIN_API_KEY"]=os.getenv("LANGCHAIN_API_KEY")
+# os.environ["LANGCHAIN_TRACING_V2"]="true"
+# os.environ["LANGCHAIN_PROJECT"]=os.getenv("LANGCHAIN_PROJECT")
 
 ## Prompt Template
 prompt=ChatPromptTemplate.from_messages(
@@ -27,7 +29,9 @@ input_text=st.text_input("What question you have in mind?")
 
 
 ## Ollama Llama2 model
-llm=Ollama(model="gemma:2b")
+#llm=Ollama(model="gemma:2b")
+llm=ChatGroq(model="Gemma2-9b-It")
+
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
 
